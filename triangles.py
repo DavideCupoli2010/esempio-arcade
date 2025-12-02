@@ -89,6 +89,8 @@ class MyGame(arcade.Window):
         self.velocity_y = 0
         self.health = 3
         self.alive = True
+        self.speed_increase_rate = 2
+        self.speed_time = 0
         
         # Input tracking per controlli più fluidi
         self.keys_pressed = {
@@ -202,11 +204,18 @@ class MyGame(arcade.Window):
             self.enemies.append(Enemy())
             self.time_since_spawn = 0
 
+        self.speed_time += delta_time
+        if self.speed_time >= self.speed_increase_rate:
+            self.speed *= 1.1
+            self.speed_time = 0
+
         # TODO 4: Lo chiamavano flash
         # Nelle righe qui sopra vediamo come fare in modo che "accada qualcosa ogni tot tempo"
-        # Aggiungi una variabile "speed_increase_rate", impostala a 2 secondi. 
+        # Aggiungi una variabile "speed_increase_rate", impostala a 2 secondi.
+        
         # Ogni due secondi, aumenta la variabile "speed" del 10%
 
+        
             
         # Aggiorna i nemici e gestisci gli spari
         for enemy in self.enemies:
