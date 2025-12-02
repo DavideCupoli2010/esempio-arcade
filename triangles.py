@@ -183,6 +183,9 @@ class MyGame(arcade.Window):
         # TODO 3: Blocca il gioco quando il giocatore muore
         # Suggerimento: All'inizio di questa funzione, controlla se il giocatore è vivo
         # Se è False, usa 'return' per uscire subito e non aggiornare nulla
+
+        if self.health <= 0:
+            return None
         
         # Aggiorna la posizione del giocatore
         self.square_x += self.velocity_x * delta_time
