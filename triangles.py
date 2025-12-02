@@ -160,6 +160,9 @@ class MyGame(arcade.Window):
         # TODO 2: Mostra "GAME OVER" quando il giocatore muore
         # Suggerimento: Controlla se il giocatore è vivo, poi usa arcade.draw_text
         # per mostrare "GAME OVER" al centro dello schermo in rosso e grassetto
+
+        if self.health <= 0:
+            arcade.draw_text("GAME OVER", SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + 20, arcade.color.RED, 40)
     
     def update_velocity(self):
         """Aggiorna la velocità in base ai tasti premuti"""
