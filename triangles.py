@@ -106,7 +106,17 @@ class MyGame(arcade.Window):
         self.time_since_spawn = 0
         self.spawn_rate = 5.0  # Un nemico ogni 5 secondi
         self.shooting_speed = 3.0  # Nemici sparano ogni 3 secondi
-        
+
+    def get_player_color(self):
+        if self.health == 3:
+            return arcade.color.BLUE
+        if self.health == 2:
+            return arcade.color.GREEN
+        if self.health == 1:
+            return arcade.color.YELLOW
+        else:
+            return arcade.color.BLACK
+    
     def on_draw(self):
         """Disegna tutti gli elementi del gioco"""
         self.clear()
@@ -117,7 +127,7 @@ class MyGame(arcade.Window):
             self.square_x + self.square_size / 2,
             self.square_y - self.square_size / 2,
             self.square_y + self.square_size / 2,
-            arcade.color.BLUE
+            self.get_player_color()
         )
         
         # TODO 1: Cambia il colore del quadrato in base alla vita
@@ -253,5 +263,4 @@ def main():
     game = MyGame()
     arcade.run()
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__": main()
